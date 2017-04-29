@@ -1,5 +1,5 @@
 <?php
-require './vendor/autoload.php';
+require_once './vendor/autoload.php';
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 //foreach (glob(__DIR__ . '/models/*.php') as $filaname) {
@@ -42,6 +42,11 @@ class ProductTable extends Illuminate\Database\Eloquent\Model
 {
     protected $table = "products";
     public $timestamps = false;
+
+    public function category()
+    {
+        return $this->belongsTo('CategoryTable', 'category_id','id');
+    }
 
 }
 

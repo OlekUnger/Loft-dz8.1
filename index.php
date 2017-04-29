@@ -17,7 +17,7 @@
             <ul class="clearfix">
                 <li class="left"><a href="/" class="active">Главная</a></li>
                 <li class="right"><a href="faker.php" class="">Faker</a></li>
-                <li class="right"><a href="product_list.php" class="">Список товаров</a></li>
+                <li class="right"><a href="list.php" class="">Список товаров</a></li>
             </ul>
         </div>
     </header>
@@ -25,8 +25,7 @@
         <h1>Домашнее задание по PHP № 8.1</h1>
     </main>
 </div>
-
-</div>
+<a class='show' href="" id="kkk">button</a>
 <footer></footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="application/javascript" src="template/main.js"></script>

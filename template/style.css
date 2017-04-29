@@ -163,6 +163,15 @@ form {
     border-right: 6px;
     background-color: papayawhip;
 }
+.form{
+    position: relative;
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-right: 6px;
+    background-color: papayawhip;
+    float:left
+}
 
 input {
     width: 100%;
@@ -252,10 +261,18 @@ textarea {
 .form-horizontal {
     width: 35%;
 }
-
+.list{
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
 table {
+    width: 70%;
     border-spacing: 0;
-    border-collapse: collapse
+    border-collapse: collapse;
+    margin-left:auto;
+    margin-right: auto;
 }
 
 td, th {
@@ -348,6 +365,12 @@ h2{
     width: 100%;
     height: 150px;
     border: 1px solid #ccc;
+}
+.product_table{
+
+    /*margin-left:50px;*/
+    /*margin-right: 50px;*/
+    /*float:right;*/
 }
 .product_price{
     color: darkred;

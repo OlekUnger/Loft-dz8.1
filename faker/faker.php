@@ -24,7 +24,7 @@ class Faker
                 Faker\Factory::create();
                 for ($i = 1; $i < 6; $i++) {
                     $category = new CategoryTable();
-                    $category->name = 'Категория ' . $i;
+                    $category->name = 'Category ' . $i;
                     $category->save();
                 }
                 $messages[] = "Контент в таблицу 'categories' добавлен";

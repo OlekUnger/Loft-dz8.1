@@ -22,7 +22,7 @@ $messages=Faker::getFaker();
             <ul class="clearfix">
                 <li class="left"><a href="/" class="">Главная</a></li>
                 <li class="right"><a href="faker.php" class="active">Faker</a></li>
-                <li class="right"><a href="product_list.php" class="">Список товаров</a></li>
+                <li class="right"><a href="list.php" class="">Список товаров</a></li>
             </ul>
         </div>
     </header>
