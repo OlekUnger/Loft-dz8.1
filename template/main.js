@@ -4,7 +4,7 @@
         $.ajax({
             cache: false,
             url: '/api.php',
-            method: 'SHOW',
+            method: 'GET',
             dataType: 'json'
         }).done(function (data) {
 
@@ -36,7 +36,7 @@
         id = this.id;
         $.ajax({
             cache: false,
-            url: '/api.php?id=' + id,
+            url: '/api2.php?id=' + id,
             method: 'GET',
             dataType: 'json'
         }).done(function (data) {
@@ -113,7 +113,7 @@
         var id = this.id;
         $.ajax({
             cache: false,
-            url: '/api.php?id=' + id,
+            url: '/api2.php?id=' + id,
             method: 'GET',
             dataType: 'json'
         }).done(function (data) {

@@ -2,16 +2,16 @@
 
 require './connect.php';
 
-if ($_SERVER['REQUEST_METHOD'] == "SHOW") {
+if ($_SERVER['REQUEST_METHOD'] == "GET") {
     $data = ProductTable::with('category')->get()->toJson();
     echo $data;
 }
 
-//один товар
-
-if ($_SERVER['REQUEST_METHOD'] == "GET") {
-    echo ProductTable::where('id', '=', $_GET['id'])->first();
-}
+////один товар
+//
+//if ($_SERVER['REQUEST_METHOD'] == "GET") {
+//    echo ProductTable::where('id', '=', $_GET['id'])->first();
+//}
 
 //удалить товар
 if ($_SERVER['REQUEST_METHOD'] == "DELETE") {
