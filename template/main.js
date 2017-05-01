@@ -1,3 +1,35 @@
+
+function getProduct(data) {
+    var products_table = "<table class='table-bordered'><tr><th>Наименование</th><th>Категория</th><th>Цена</th><th>Описание</th><th>Редактировать</th><th>Удалить</th></tr>";
+    products_table += '<td>' + data.name + '</td>';
+    products_table += '<td>' + data.category_id + '</td>';
+    products_table += '<td>' + data.price + '</td>';
+    products_table += '<td>' + data.description + '</td>';
+    products_table += "<td><a  id=" + data.id + " class='edit' href='edit.php'>Редактировать</a></td>";
+    products_table += "<td><a id=" + data.id + " class='delete' href=''>Удалить</a></td></tr>";
+    products_table += '</table>';
+    $('.product_table').html(products_table);
+};
+
+function getProducts(data) {
+    var products_table = "<table  class='table-bordered'><tr><th>id</th><th>Наименование</th><th>Категория</th><th>Цена</th><th>Описание</th><th>Посмотреть</th><th>Редактировать</th><th>Удалить</th></tr>";
+    for (var i = 0; i < data.length; i++) {
+        var id = data[i].id;
+        products_table += '<td>' + data[i].id + '</td>';
+        products_table += '<td>' + data[i].name + '</td>';
+        products_table += '<td>' + data[i]['category'].name + '</td>';
+        products_table += '<td>' + data[i].price + '</td>';
+        products_table += '<td>' + data[i].description + '</td>';
+        products_table += '<td><a  id=' + id + ' class="show" href="">товар</a></td>';
+        products_table += '<td><a  id=' + id + ' class="edit" href="">Редактировать</a></td>';
+        products_table += '<td><a  id=' + id + ' class="delete" href="">Удалить</a></td></tr>';
+    }
+    products_table += '</table>';
+    $('.product_table').html(products_table);
+};
+
+
+
 // показать все товары
 (function () {
     $("#button").on('click', function () {
@@ -7,26 +39,11 @@
             method: 'GET',
             dataType: 'json'
         }).done(function (data) {
-
-            var products_table = "<table  class='table-bordered'><tr><th>id</th><th>Наименование</th><th>Категория</th><th>Цена</th><th>Описание</th><th>Посмотреть</th><th>Редактировать</th><th>Удалить</th></tr>";
-            for (var i=0; i<data.length; i++) {
-                var id = data[i].id;
-
-
-                products_table += '<td>' + data[i].id + '</td>';
-                products_table += '<td>' + data[i].name + '</td>';
-                products_table += '<td>' + data[i]['category'].name + '</td>';
-                products_table += '<td>' + data[i].price + '</td>';
-                products_table += '<td>' + data[i].description + '</td>';
-                products_table += '<td><a  id=' + id + ' class="show" href="">товар</a></td>';
-                products_table += '<td><a  id=' + id + ' class="edit" href="">Редактировать</a></td>';
-                products_table += '<td><a  id=' + id + ' class="delete" href="">Удалить</a></td></tr>';
-            }
-            products_table += '</table>';
-            $('.product_table').html(products_table);
+           getProducts(data);
         });
     });
 })();
+
 
 // посмотреть один товар
 
@@ -40,15 +57,7 @@
             method: 'GET',
             dataType: 'json'
         }).done(function (data) {
-            var products_table = "<table class='table-bordered'><tr><th>Наименование</th><th>Категория</th><th>Цена</th><th>Описание</th><th>Редактировать</th><th>Удалить</th></tr>";
-            products_table += '<td>' + data.name + '</td>';
-            products_table += '<td>' + data.category_id + '</td>';
-            products_table += '<td>' + data.price + '</td>';
-            products_table += '<td>' + data.description + '</td>';
-            products_table += "<td><a  id=" + data.id + " class='edit' href='edit.php'>Редактировать</a></td>";
-            products_table += "<td><a id=" + data.id + " class='delete' href=''>Удалить</a></td></tr>";
-            products_table += '</table>';
-            $('.product_table').html(products_table);
+            getProduct(data);
         });
     });
 })();
@@ -78,8 +87,21 @@
             $('.add_form').append("<div class='success'>товар добавлен</div>");
             setTimeout(function () {
                 $('.success').remove();
-            }, 1000)
+                $('.add_form').find('input[type=text],textarea').val('');
+            }, 1000);
         });
+
+        setTimeout(function () {
+            $.ajax({
+                cache: false,
+                url: '/api.php',
+                method: 'GET',
+                dataType: 'json'
+            }).done(function (data) {
+                getProducts(data);
+            });
+        }, 2000);
+
     });
 })();
 
@@ -100,7 +122,6 @@
             tr.fadeOut(100, function () {
                 $(this).remove();
             });
-
         });
     });
 })();
@@ -151,15 +172,7 @@
             setTimeout(function () {
                 $('.success').remove();
             }, 1000);
-            var products_table = "<table class='table-bordered'><tr><th>Наименование</th><th>Категория</th><th>Цена</th><th>Описание</th><th>Редактировать</th><th>Удалить</th></tr>";
-            products_table += '<td>' + data.name + '</td>';
-            products_table += '<td>' + data.category_id + '</td>';
-            products_table += '<td>' + data.price + '</td>';
-            products_table += '<td>' + data.description + '</td>';
-            products_table += "<td><a  id=" + data.id + " class='edit' href='edit.php'>Редактировать</a></td>";
-            products_table += "<td><a id=" + data.id + " class='delete' href=''>Удалить</a></td></tr>";
-            products_table += '</table>';
-            $('.product_table').html(products_table);
+            getProduct(data);
         });
     });
 })();
